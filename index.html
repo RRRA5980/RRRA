@@ -187,6 +187,156 @@
             color: #111;
         }
 
+        /* Cart Sidebar Drawer */
+        .cart-drawer {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 380px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+            z-index: 3000;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-drawer.open {
+            right: 0;
+        }
+        .cart-header {
+            background: #111;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-cart {
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .cart-body {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item-details h4 {
+            font-size: 15px;
+            color: #111;
+        }
+        .cart-item-details p {
+            color: #e74c3c;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .remove-item {
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 14px;
+            background: none;
+            border: none;
+        }
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+        }
+        .total-price {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .checkout-btn {
+            background: #00d2ff;
+            color: #111;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .checkout-btn:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        /* Checkout Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 4000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #888;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #111;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #fff;
+        }
+        .form-group select:focus, .form-group input:focus {
+            border-color: #00d2ff;
+            outline: none;
+        }
+        .payment-instructions {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #0056b3;
+            margin-bottom: 15px;
+            display: none;
+        }
+
         /* About & Contact Section */
         .info-section {
             background: #fff;
@@ -212,73 +362,6 @@
             font-size: 15px;
         }
 
-        /* Modal Popup for Order */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-        .close-btn {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            font-size: 22px;
-            cursor: pointer;
-            color: #888;
-        }
-        .modal-content h3 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .submit-order-btn {
-            background: #00d2ff;
-            color: #111;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-        .submit-order-btn:hover {
-            background: #111;
-            color: #fff;
-        }
-
         /* Footer */
         footer {
             background: #111;
@@ -299,7 +382,7 @@
             <a href="#products">Collection</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <div class="cart-icon" onclick="alert('Your Cart is empty!')">
+            <div class="cart-icon" onclick="toggleCart()">
                 <i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span>
             </div>
         </nav>
@@ -325,7 +408,7 @@
                 <div class="product-info">
                     <h3 class="product-title">Classic Winter Jacket</h3>
                     <p class="product-price">BDT 2,500</p>
-                    <button class="buy-btn" onclick="openOrderModal('Classic Winter Jacket', 'BDT 2,500')">Order Now</button>
+                    <button class="buy-btn" onclick="addToCart('Classic Winter Jacket', 2500)">Add to Cart</button>
                 </div>
             </div>
 
@@ -335,7 +418,7 @@
                 <div class="product-info">
                     <h3 class="product-title">Cozy Fleece Hoodie</h3>
                     <p class="product-price">BDT 1,499</p>
-                    <button class="buy-btn" onclick="openOrderModal('Cozy Fleece Hoodie', 'BDT 1,499')">Order Now</button>
+                    <button class="buy-btn" onclick="addToCart('Cozy Fleece Hoodie', 1499)">Add to Cart</button>
                 </div>
             </div>
 
@@ -345,14 +428,80 @@
                 <div class="product-info">
                     <h3 class="product-title">Knitted Wool Sweater</h3>
                     <p class="product-price">BDT 1,800</p>
-                    <button class="buy-btn" onclick="openOrderModal('Knitted Wool Sweater', 'BDT 1,800')">Order Now</button>
+                    <button class="buy-btn" onclick="addToCart('Knitted Wool Sweater', 1800)">Add to Cart</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- About & Contact Info Section -->
+    <!-- Cart Drawer Sidebar -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Shopping Cart</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+            <p style="text-align: center; color: #888; margin-top: 20px;">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-price">
+                <span>Total:</span>
+                <span id="cartTotal">BDT 0</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutModal()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCheckoutModal()">&times;</span>
+            <h3 style="margin-bottom: 20px; text-align: center; color: #111;">Complete Your Order</h3>
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="custName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="custPhone" required placeholder="01XXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>
+                    <textarea id="custAddress" rows="3" required placeholder="House, Road, Area, City"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Select Payment Method</label>
+                    <select id="paymentMethod" onchange="checkPaymentMethod()" required>
+                        <option value="">-- Choose Payment Option --</option>
+                        <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                        <option value="bKash">bKash (Personal: 01850507154)</option>
+                        <option value="Nagad">Nagad (Personal: 01850507154)</option>
+                        <option value="Rocket">Rocket (Personal: 01850507154)</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                
+                <!-- Dynamic TrxID & Sender Box -->
+                <div class="payment-instructions" id="paymentInstructions">
+                    Please send money to our Personal number: <strong>01850-507154</strong> and fill in the details below:
+                </div>
+                <div class="form-group" id="trxGroup" style="display: none;">
+                    <label>Sender Mobile Number</label>
+                    <input type="text" id="senderNumber" placeholder="e.g. 017XXXXXXXX">
+                </div>
+                <div class="form-group" id="trxIdGroup" style="display: none;">
+                    <label>Transaction ID (TrxID)</label>
+                    <input type="text" id="trxId" placeholder="e.g. 9H7K3L2M1">
+                </div>
+
+                <button type="submit" class="checkout-btn" style="margin-top: 10px;">Confirm & Send to WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- About & Contact Section -->
     <div class="info-section" id="about">
         <div class="info-container">
             <div class="info-box">
@@ -363,35 +512,8 @@
                 <h3>Contact Us</h3>
                 <p><strong>Phone:</strong> +8801850-507154</p>
                 <p><strong>Email:</strong> support@engrrabiul5980@gmail.com</p>
-                <p><strong>Address:</strong> Bera,Pabna, Bangladesh</p>
+                <p><strong>Address:</strong> Bera, Pabna, Bangladesh</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Order Modal Popup -->
-    <div class="modal" id="orderModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
-            <h3>Checkout Form</h3>
-            <form onsubmit="submitOrder(event)">
-                <div class="form-group">
-                    <label>Selected Product</label>
-                    <input type="text" id="modal-product" readonly style="background: #e9e9e9;">
-                </div>
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" required placeholder="01XXXXXXXXX">
-                </div>
-                <div class="form-group">
-                    <label>Delivery Address</label>
-                    <textarea rows="3" required placeholder="House, Road, Area, City"></textarea>
-                </div>
-                <button type="submit" class="submit-order-btn">Confirm Order</button>
-            </form>
         </div>
     </div>
 
@@ -400,25 +522,126 @@
         <p>&copy; 2026 RRRA Winter Store. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for interactivity -->
+    <!-- JavaScript for Cart & WhatsApp Integration -->
     <script>
-        let cartCount = 0;
+        let cart = [];
 
-        function openOrderModal(productName, productPrice) {
-            document.getElementById('modal-product').value = productName + ' (' + productPrice + ')';
-            document.getElementById('orderModal').style.display = 'flex';
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('open');
         }
 
-        function closeOrderModal() {
-            document.getElementById('orderModal').style.display = 'none';
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            alert(name + ' has been added to your cart!');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const countSpan = document.getElementById('cart-count');
+            const totalSpan = document.getElementById('cartTotal');
+
+            countSpan.innerText = cart.length;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #888; margin-top: 20px;">Your cart is empty.</p>';
+                totalSpan.innerText = 'BDT 0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>BDT ${item.price.toLocaleString()}</p>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalSpan.innerText = 'BDT ' + total.toLocaleString();
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert('Your cart is empty! Please add products first.');
+                return;
+            }
+            toggleCart();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function checkPaymentMethod() {
+            const method = document.getElementById('paymentMethod').value;
+            const instructions = document.getElementById('paymentInstructions');
+            const trxGroup = document.getElementById('trxGroup');
+            const trxIdGroup = document.getElementById('trxIdGroup');
+            const senderInput = document.getElementById('senderNumber');
+            const trxInput = document.getElementById('trxId');
+
+            if (method === 'bKash' || method === 'Nagad' || method === 'Rocket') {
+                instructions.style.display = 'block';
+                trxGroup.style.display = 'block';
+                trxIdGroup.style.display = 'block';
+                senderInput.setAttribute('required', 'true');
+                trxInput.setAttribute('required', 'true');
+            } else {
+                instructions.style.display = 'none';
+                trxGroup.style.display = 'none';
+                trxIdGroup.style.display = 'none';
+                senderInput.removeAttribute('required');
+                trxInput.removeAttribute('required');
+            }
         }
 
         function submitOrder(event) {
             event.preventDefault();
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            alert('🎉 Order placed successfully! Thank you for shopping with RRRA.');
-            closeOrderModal();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+            const payment = document.getElementById('paymentMethod').value;
+            const senderNum = document.getElementById('senderNumber').value || 'N/A';
+            const trxId = document.getElementById('trxId').value || 'N/A';
+
+            let orderSummary = '';
+            let total = 0;
+            cart.forEach(item => {
+                orderSummary += `- ${item.name} (${item.price} BDT)%0A`;
+                total += item.price;
+            });
+
+            // WhatsApp Number
+            const whatsappNumber = "8801850507154";
+
+            // WhatsApp Message Format
+            const message = `🛍️ *New Order from RRRA Website*%0A%0A*Customer Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A${orderSummary}*Total Amount:* BDT ${total}%0A*Payment Method:* ${payment}%0A*Sender No:* ${senderNum}%0A*TrxID:* ${trxId}`;
+
+            // Open WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+
+            // Clear Cart & Close Modal
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+            document.getElementById('paymentMethod').value = '';
+            checkPaymentMethod();
         }
     </script>
 
