@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRRA - Exclusive Winter Collection</title>
+    <title>RRRA - Multi-Category Online Store</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
@@ -46,7 +46,7 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            margin-left: 25px;
+            margin-left: 20px;
             font-size: 15px;
             font-weight: 500;
             transition: 0.3s;
@@ -59,7 +59,7 @@
             color: #111;
             padding: 8px 15px;
             border-radius: 20px;
-            margin-left: 25px;
+            margin-left: 20px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -73,7 +73,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             height: 75vh;
@@ -86,7 +86,7 @@
             padding: 0 20px;
         }
         .hero h1 {
-            font-size: 52px;
+            font-size: 48px;
             margin-bottom: 15px;
             font-weight: 700;
         }
@@ -114,10 +114,35 @@
             transform: translateY(-2px);
         }
 
+        /* Category Filter Buttons */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px 0 20px 0;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        .cat-btn {
+            background: #fff;
+            border: 2px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .cat-btn.active, .cat-btn:hover {
+            background: #00d2ff;
+            border-color: #00d2ff;
+            color: #111;
+        }
+
         /* Products Section */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 30px auto 60px auto;
             padding: 0 20px;
         }
         .section-title {
@@ -130,12 +155,12 @@
         .section-subtitle {
             text-align: center;
             color: #666;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 16px;
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
         .product-card {
@@ -152,39 +177,172 @@
         }
         .product-img {
             width: 100%;
-            height: 260px;
+            height: 220px;
             object-fit: cover;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .product-img:hover {
+            opacity: 0.9;
         }
         .product-info {
-            padding: 22px;
+            padding: 20px;
             text-align: center;
         }
+        .product-category-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #00d2ff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
         .product-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             margin-bottom: 8px;
             color: #222;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .product-title:hover {
+            color: #00d2ff;
         }
         .product-price {
             color: #e74c3c;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
+        }
+        
+        /* Button Container */
+        .btn-container {
+            display: flex;
+            gap: 10px;
         }
         .buy-btn {
             background: #111;
             color: #fff;
-            padding: 12px 20px;
+            padding: 10px 14px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            width: 100%;
+            width: 50%;
             font-weight: 600;
+            font-size: 13px;
             transition: 0.3s;
         }
         .buy-btn:hover {
+            background: #333;
+        }
+        .instant-buy-btn {
             background: #00d2ff;
             color: #111;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 50%;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .instant-buy-btn:hover {
+            background: #00a8cc;
+            color: #fff;
+        }
+
+        /* Quick View Modal (Product Detail Popup) */
+        .quick-view-modal {
+            display: none;
+            position: fixed;
+            z-index: 5000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .quick-view-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        @media(max-width: 650px) {
+            .quick-view-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+        .quick-view-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .quick-view-details {
+            flex: 1;
+        }
+        .quick-view-details h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #111;
+        }
+        .quick-view-details .price {
+            font-size: 19px;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        /* Description & Reviews Tabs */
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            padding-bottom: 4px;
+            transition: 0.3s;
+        }
+        .tab-btn.active {
+            color: #00d2ff;
+            border-bottom: 2px solid #00d2ff;
+        }
+        .tab-content {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            min-height: 50px;
+            white-space: pre-line;
+        }
+        
+        .close-quick-view {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
         }
 
         /* Cart Sidebar Drawer */
@@ -389,7 +547,7 @@
         <div class="logo">RRRA</div>
         <nav>
             <a href="#">Home</a>
-            <a href="#products">Collection</a>
+            <a href="#products">Shop</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <div class="cart-icon" onclick="toggleCart()">
@@ -399,49 +557,192 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Stay Warm, Stay Stylish</h1>
-        <p>Explore the exclusive RRRA Winter Collection designed to keep you cozy through the coldest days with premium quality fabrics.</p>
-        <a href="#products" class="btn">Explore Collection</a>
-    </section>
+    <div class="hero">
+        <h1>Welcome to RRRA Online Store</h1>
+        <p>Explore wide ranges of Fashion, Electronics, Gadgets, Health & Beauty, and Winter Essentials.</p>
+        <a href="#products" class="btn">Explore Store</a>
+    </div>
 
     <!-- Products Section -->
     <div class="container" id="products">
-        <h2 class="section-title">Featured Winter Products</h2>
-        <p class="section-subtitle">Handpicked cozy essentials just for you</p>
+        <h2 class="section-title">Explore All Categories</h2>
+        <p class="section-subtitle">Click on any product image or title to view details, description & reviews</p>
         
-        <div class="product-grid">
+        <!-- Category Filter Buttons -->
+        <div class="category-filter">
+            <button class="cat-btn active" onclick="filterCategory('all', this)">All</button>
+            <button class="cat-btn" onclick="filterCategory('mens-fashion', this)">Men's Fashion</button>
+            <button class="cat-btn" onclick="filterCategory('womens-fashion', this)">Women's Fashion</button>
+            <button class="cat-btn" onclick="filterCategory('electronics', this)">Electronics</button>
+            <button class="cat-btn" onclick="filterCategory('gadgets', this)">Gadgets</button>
+            <button class="cat-btn" onclick="filterCategory('health-beauty', this)">Health & Beauty</button>
+            <button class="cat-btn" onclick="filterCategory('home-lifestyle', this)">Home & Lifestyle</button>
+            <button class="cat-btn" onclick="filterCategory('winter', this)">Winter Collection</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
             
-            <!-- Product 1 -->
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/30750963/pexels-photo-30750963.jpeg" alt="Jacket" class="product-img">
+            <!-- ========================================== -->
+            <!-- CATEGORY 1: MEN'S FASHION                  -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="mens-fashion">
+                <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80" alt="Mens Shirt" class="product-img" onclick="openQuickView('Formal Cotton Shirt for Men', 950, 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80', 'High quality premium cotton formal shirt for men. Perfect for office, formal events, and casual outings.', '⭐ 4.8/5 (12 Reviews)\n- \"Very comfortable fabric and perfect fitting!\" - Rahim\n- \"Great quality shirt for daily office wear.\" - Tanvir')">
                 <div class="product-info">
-                    <h3 class="product-title">Classic Winter Jacket</h3>
+                    <div class="product-category-tag">Men's Fashion</div>
+                    <h3 class="product-title" onclick="openQuickView('Formal Cotton Shirt for Men', 950, 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80', 'High quality premium cotton formal shirt for men. Perfect for office, formal events, and casual outings.', '⭐ 4.8/5 (12 Reviews)\n- \"Very comfortable fabric and perfect fitting!\" - Rahim\n- \"Great quality shirt for daily office wear.\" - Tanvir')">Formal Cotton Shirt for Men</h3>
+                    <p class="product-price">BDT 950</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Formal Cotton Shirt for Men', 950)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Formal Cotton Shirt for Men', 950)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 2: WOMEN'S FASHION                -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="womens-fashion">
+                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Saree" class="product-img" onclick="openQuickView('Designer Party Wear Saree', 2800, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80', 'Elegant designer party wear saree with stunning embroidery work. Comfortable fabric and gorgeous look.', '⭐ 5.0/5 (8 Reviews)\n- \"The saree looks stunning and premium quality!\" - Farhana\n- \"Loved the color and embroidery design.\" - Nusrat')">
+                <div class="product-info">
+                    <div class="product-category-tag">Women's Fashion</div>
+                    <h3 class="product-title" onclick="openQuickView('Designer Party Wear Saree', 2800, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80', 'Elegant designer party wear saree with stunning embroidery work. Comfortable fabric and gorgeous look.', '⭐ 5.0/5 (8 Reviews)\n- \"The saree looks stunning and premium quality!\" - Farhana\n- \"Loved the color and embroidery design.\" - Nusrat')">Designer Party Wear Saree</h3>
+                    <p class="product-price">BDT 2,800</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Designer Party Wear Saree', 2800)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Designer Party Wear Saree', 2800)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 3: ELECTRONICS                    -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="electronics">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphone" class="product-img" onclick="openQuickView('Wireless Bluetooth Headphone', 2200, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80', 'Immersive bass, crystal clear sound quality, and long-lasting battery backup bluetooth headphone.', '⭐ 4.7/5 (19 Reviews)\n- \"Awesome bass and sound clarity!\" - Sabbir\n- \"Battery backup is superb.\" - Al-Amin')">
+                <div class="product-info">
+                    <div class="product-category-tag">Electronics</div>
+                    <h3 class="product-title" onclick="openQuickView('Wireless Bluetooth Headphone', 2200, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80', 'Immersive bass, crystal clear sound quality, and long-lasting battery backup bluetooth headphone.', '⭐ 4.7/5 (19 Reviews)\n- \"Awesome bass and sound clarity!\" - Sabbir\n- \"Battery backup is superb.\" - Al-Amin')">Wireless Bluetooth Headphone</h3>
+                    <p class="product-price">BDT 2,200</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Wireless Bluetooth Headphone', 2200)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Wireless Bluetooth Headphone', 2200)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 4: GADGETS                        -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="gadgets">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Smartwatch" class="product-img" onclick="openQuickView('Smart Fitness Watch Series 8', 3500, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', 'Track your health, heart rate, workouts, and receive smartphone notifications directly on your wrist.', '⭐ 4.9/5 (25 Reviews)\n- \"Works great with my phone! Very smooth display.\" - Rashed\n- \"Accurate fitness tracking.\" - Hasan')">
+                <div class="product-info">
+                    <div class="product-category-tag">Gadgets</div>
+                    <h3 class="product-title" onclick="openQuickView('Smart Fitness Watch Series 8', 3500, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', 'Track your health, heart rate, workouts, and receive smartphone notifications directly on your wrist.', '⭐ 4.9/5 (25 Reviews)\n- \"Works great with my phone! Very smooth display.\" - Rashed\n- \"Accurate fitness tracking.\" - Hasan')">Smart Fitness Watch Series 8</h3>
+                    <p class="product-price">BDT 3,500</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Smart Fitness Watch Series 8', 3500)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Smart Fitness Watch Series 8', 3500)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-category="gadgets">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="Earbuds" class="product-img" onclick="openQuickView('TWS Wireless Earbuds Pro', 1650, 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80', 'True wireless stereo earbuds with active noise cancellation and ergonomic comfortable design.', '⭐ 4.6/5 (14 Reviews)\n- \"Good sound and fits comfortably in ears.\" - Shuvo\n- \"Value for money.\" - Arman')">
+                <div class="product-info">
+                    <div class="product-category-tag">Gadgets</div>
+                    <h3 class="product-title" onclick="openQuickView('TWS Wireless Earbuds Pro', 1650, 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80', 'True wireless stereo earbuds with active noise cancellation and ergonomic comfortable design.', '⭐ 4.6/5 (14 Reviews)\n- \"Good sound and fits comfortably in ears.\" - Shuvo\n- \"Value for money.\" - Arman')">TWS Wireless Earbuds Pro</h3>
+                    <p class="product-price">BDT 1,650</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('TWS Wireless Earbuds Pro', 1650)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('TWS Wireless Earbuds Pro', 1650)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 5: HEALTH & BEAUTY                -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="health-beauty">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Skincare" class="product-img" onclick="openQuickView('Natural Glowing Skincare Kit', 1250, 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80', 'Complete natural organic skincare kit for bright, glowing, and acne-free healthy skin.', '⭐ 4.8/5 (10 Reviews)\n- \"My skin feels so soft and glowing after using this!\" - Sumaiya\n- \"100% natural products.\" - Mitu')">
+                <div class="product-info">
+                    <div class="product-category-tag">Health & Beauty</div>
+                    <h3 class="product-title" onclick="openQuickView('Natural Glowing Skincare Kit', 1250, 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80', 'Complete natural organic skincare kit for bright, glowing, and acne-free healthy skin.', '⭐ 4.8/5 (10 Reviews)\n- \"My skin feels so soft and glowing after using this!\" - Sumaiya\n- \"100% natural products.\" - Mitu')">Natural Glowing Skincare Kit</h3>
+                    <p class="product-price">BDT 1,250</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Natural Glowing Skincare Kit', 1250)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Natural Glowing Skincare Kit', 1250)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 6: HOME & LIFESTYLE               -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="home-lifestyle">
+                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Lamp" class="product-img" onclick="openQuickView('Modern Bedside LED Desk Lamp', 890, 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80', 'Eye-caring touch control LED desk lamp with adjustable brightness levels for study and bedroom.', '⭐ 4.9/5 (16 Reviews)\n- \"Perfect for study table reading at night.\" - Jewel\n- \"Touch control works smoothly.\" - Nipa')">
+                <div class="product-info">
+                    <div class="product-category-tag">Home & Lifestyle</div>
+                    <h3 class="product-title" onclick="openQuickView('Modern Bedside LED Desk Lamp', 890, 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80', 'Eye-caring touch control LED desk lamp with adjustable brightness levels for study and bedroom.', '⭐ 4.9/5 (16 Reviews)\n- \"Perfect for study table reading at night.\" - Jewel\n- \"Touch control works smoothly.\" - Nipa')">Modern Bedside LED Desk Lamp</h3>
+                    <p class="product-price">BDT 890</p>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Modern Bedside LED Desk Lamp', 890)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Modern Bedside LED Desk Lamp', 890)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- CATEGORY 7: WINTER COLLECTION              -->
+            <!-- ========================================== -->
+            <div class="product-card" data-category="winter">
+                <img src="https://images.pexels.com/photos/30750963/pexels-photo-30750963.jpeg" alt="Jacket" class="product-img" onclick="openQuickView('Classic Winter Jacket', 2500, 'https://images.pexels.com/photos/30750963/pexels-photo-30750963.jpeg', 'Stay warm and cozy through extreme cold days with our premium insulated winter jacket.', '⭐ 5.0/5 (22 Reviews)\n- \"Extremely warm and stylish winter jacket!\" - Kamal\n- \"Best quality fabric.\" - Rakibul')">
+                <div class="product-info">
+                    <div class="product-category-tag">Winter Collection</div>
+                    <h3 class="product-title" onclick="openQuickView('Classic Winter Jacket', 2500, 'https://images.pexels.com/photos/30750963/pexels-photo-30750963.jpeg', 'Stay warm and cozy through extreme cold days with our premium insulated winter jacket.', '⭐ 5.0/5 (22 Reviews)\n- \"Extremely warm and stylish winter jacket!\" - Kamal\n- \"Best quality fabric.\" - Rakibul')">Classic Winter Jacket</h3>
                     <p class="product-price">BDT 2,500</p>
-                    <button class="buy-btn" onclick="addToCart('Classic Winter Jacket', 2500)">Add to Cart</button>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Classic Winter Jacket', 2500)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Classic Winter Jacket', 2500)">Buy Now</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Product 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Hoodie" class="product-img">
+            <div class="product-card" data-category="winter">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Hoodie" class="product-img" onclick="openQuickView('Cozy Fleece Hoodie', 1499, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80', 'Soft fleece inside hoodie designed to keep you warm and stylish during winter days.', '⭐ 4.8/5 (18 Reviews)\n- \"Very soft and cozy fleece inside.\" - Fahim\n- \"Loved it!\" - Lima')">
                 <div class="product-info">
-                    <h3 class="product-title">Cozy Fleece Hoodie</h3>
+                    <div class="product-category-tag">Winter Collection</div>
+                    <h3 class="product-title" onclick="openQuickView('Cozy Fleece Hoodie', 1499, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80', 'Soft fleece inside hoodie designed to keep you warm and stylish during winter days.', '⭐ 4.8/5 (18 Reviews)\n- \"Very soft and cozy fleece inside.\" - Fahim\n- \"Loved it!\" - Lima')">Cozy Fleece Hoodie</h3>
                     <p class="product-price">BDT 1,499</p>
-                    <button class="buy-btn" onclick="addToCart('Cozy Fleece Hoodie', 1499)">Add to Cart</button>
+                    <div class="btn-container">
+                        <button class="buy-btn" onclick="addToCart('Cozy Fleece Hoodie', 1499)">Add to Cart</button>
+                        <button class="instant-buy-btn" onclick="buyNow('Cozy Fleece Hoodie', 1499)">Buy Now</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Product 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=600&q=80" alt="Sweater" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Knitted Wool Sweater</h3>
-                    <p class="product-price">BDT 1,800</p>
-                    <button class="buy-btn" onclick="addToCart('Knitted Wool Sweater', 1800)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal (Product Detail Popup with Tabs) -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <span class="close-quick-view" onclick="closeQuickView()">&times;</span>
+            <img id="qvImg" src="" alt="Product Image" class="quick-view-img">
+            <div class="quick-view-details">
+                <h2 id="qvTitle"></h2>
+                <div class="price" id="qvPrice"></div>
+                
+                <!-- Description & Reviews Tab Buttons -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" id="descTabBtn" onclick="switchTab('desc')">Description</button>
+                    <button class="tab-btn" id="revTabBtn" onclick="switchTab('rev')">Reviews</button>
+                </div>
+                
+                <div class="tab-content" id="qvTabContent"></div>
+
+                <div class="btn-container" style="margin-top: 15px;">
+                    <button class="buy-btn" onclick="addCurrentToCart()">Add to Cart</button>
+                    <button class="instant-buy-btn" onclick="buyCurrentNow()">Buy Now</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -486,16 +787,16 @@
                     <select id="paymentMethod" onchange="checkPaymentMethod()" required>
                         <option value="">-- Choose Payment Option --</option>
                         <option value="Cash on Delivery">Cash on Delivery (COD)</option>
-                        <option value="bKash">bKash (Personal: 01850507154)</option>
-                        <option value="Nagad">Nagad (Personal: 01850507154)</option>
-                        <option value="Rocket">Rocket (Personal: 01850507154)</option>
+                        <option value="bKash">bKash (Personal: +8801727-866276)</option>
+                        <option value="Nagad">Nagad (Personal: +8801727-866276)</option>
+                        <option value="Rocket">Rocket (Personal: +8801727-866276)</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                     </select>
                 </div>
                 
                 <!-- Dynamic TrxID & Sender Box -->
                 <div class="payment-instructions" id="paymentInstructions">
-                    Please send money to our Personal number: <strong>01850-507154</strong> and fill in the details below:
+                    Please send money to our Personal number: <strong>+8801727-866276</strong> and fill in the details below:
                 </div>
                 <div class="form-group" id="trxGroup" style="display: none;">
                     <label>Sender Mobile Number</label>
@@ -525,16 +826,16 @@
         <div class="info-container">
             <div class="info-box">
                 <h3>About RRRA</h3>
-                <p>RRRA is your ultimate destination for premium winter clothing. We bring you the finest quality jackets, hoodies, and sweaters to ensure you stay warm without compromising on your style.</p>
+                <p>RRRA is your trusted multi-category online shopping destination offering everything from fashion, electronics, gadgets to health & beauty products.</p>
             </div>
             <div class="info-box" id="contact">
                 <h3>Contact Us</h3>
-                <p><strong>Phone:</strong> +8801850-507154</p>
+                <p><strong>Phone:</strong> +8801727-866276</p>
                 <p><strong>Email:</strong> engrrabiul5980@gmail.com</p>
                 <p><strong>Address:</strong> Bera, Pabna, Bangladesh</p>
                 <div class="social-links" style="margin-top: 15px;">
                     <a href="https://wa.me/8801727866276" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://m.me/@rabiulislam5980" target="_blank" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href="https://m.me/rabiulislam5980" target="_blank" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
                     <a href="mailto:engrrabiul5980@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
@@ -543,12 +844,75 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 RRRA Winter Store. All rights reserved.</p>
+        <p>&copy; 2026 RRRA Store. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Cart & Multi-Platform Order Routing -->
+    <!-- JavaScript for Tabs, Quick View, Filtering & Cart -->
     <script>
         let cart = [];
+        let currentProduct = { name: '', price: 0 };
+        let activeDescription = '';
+        let activeReviews = '';
+
+        function filterCategory(category, button) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Quick View Modal with Description & Reviews
+        function openQuickView(title, price, img, desc, rev) {
+            currentProduct = { name: title, price: price };
+            activeDescription = desc;
+            activeReviews = rev;
+
+            document.getElementById('qvTitle').innerText = title;
+            document.getElementById('qvPrice').innerText = 'BDT ' + price.toLocaleString();
+            document.getElementById('qvImg').src = img;
+            
+            // Default to Description tab
+            switchTab('desc');
+            
+            document.getElementById('quickViewModal').style.display = 'flex';
+        }
+
+        function switchTab(tab) {
+            const descBtn = document.getElementById('descTabBtn');
+            const revBtn = document.getElementById('revTabBtn');
+            const contentBox = document.getElementById('qvTabContent');
+
+            if (tab === 'desc') {
+                descBtn.classList.add('active');
+                revBtn.classList.remove('active');
+                contentBox.innerText = activeDescription;
+            } else {
+                revBtn.classList.add('active');
+                descBtn.classList.remove('active');
+                contentBox.innerText = activeReviews;
+            }
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').style.display = 'none';
+        }
+
+        function addCurrentToCart() {
+            addToCart(currentProduct.name, currentProduct.price);
+            closeQuickView();
+        }
+
+        function buyCurrentNow() {
+            buyNow(currentProduct.name, currentProduct.price);
+            closeQuickView();
+        }
 
         function toggleCart() {
             const drawer = document.getElementById('cartDrawer');
@@ -559,6 +923,13 @@
             cart.push({ name, price });
             updateCartUI();
             alert(name + ' has been added to your cart!');
+        }
+
+        function buyNow(name, price) {
+            cart = [];
+            cart.push({ name, price });
+            updateCartUI();
+            openCheckoutModal();
         }
 
         function removeFromCart(index) {
@@ -604,7 +975,10 @@
                 alert('Your cart is empty! Please add products first.');
                 return;
             }
-            toggleCart();
+            const drawer = document.getElementById('cartDrawer');
+            if (drawer.classList.contains('open')) {
+                toggleCart();
+            }
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
@@ -652,16 +1026,13 @@
                 total += item.price;
             });
 
-            // Message text formatting
             const message = `🛍️ New Order from RRRA Website\n\nCustomer Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nProducts:\n${orderSummary}Total Amount: BDT ${total}\nPayment Method: ${payment}\nSender No: ${senderNum}\nTrxID: ${trxId}`;
 
             if (sendMethod === 'whatsapp') {
                 const whatsappNumber = "8801727866276";
                 window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
             } else if (sendMethod === 'messenger') {
-                // Replace with your Facebook page username or messenger link if available
-                const messengerLink = "https://m.me/@rabiulislam5980";
-                window.open(@rabiulislam5980, '_blank');
+                window.open("https://m.me/rabiulislam5980", '_blank');
                 alert("Please paste your order summary in Messenger:\n\n" + message);
             } else if (sendMethod === 'email') {
                 const emailAddress = "engrrabiul5980@gmail.com";
@@ -669,7 +1040,6 @@
                 window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${encodeURIComponent(message)}`;
             }
 
-            // Clear Cart & Close Modal
             cart = [];
             updateCartUI();
             closeCheckoutModal();
