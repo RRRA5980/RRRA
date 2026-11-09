@@ -623,32 +623,6 @@
                     </div>
                 </div>
             </div>
-  <div class="product-card" data-category="electronics">
-                <img src="https://selfshop.com.bd/_next/image?url=https%3A%2F%2Fmedia.selfshop.com.bd%2Fproducts%2Fvendor%2Fwhatsapp-image-2026-07-17-at-232346-1_UDjavrBZ.jpeg&w=640&q=75" alt="Headphone" class="product-img clickable-item" data-title="Anker ES67 Magnetic Wireless Neckband Bluetooth 5.4 Extra Bass 600mAh Type C HD Call Black" data-price="565" data-img="https://selfshop.com.bd/_next/image?url=https%3A%2F%2Fmedia.selfshop.com.bd%2Fproducts%2Fvendor%2Fwhatsapp-image-2026-07-17-at-232346-1_UDjavrBZ.jpeg&w=640&q=75" data-desc="Category :
-Electronic Accessories
-Quantity :
-999
-SKU :
-VP1784796850248 Immersive bass, crystal clear sound quality, and long-lasting battery backup bluetooth headphone." data-rev="⭐ 4.7/5 (19 Reviews)- Awesome bass and sound clarity! - Sabbir- Battery backup is superb. - Al-Amin">
-                <div class="product-info">
-                    <div class="product-category-tag">Electronics</div>
-                    <h3 class="product-title clickable-item" data-title="Anker ES67 Magnetic Wireless Neckband Bluetooth 5.4 Extra Bass 600mAh Type C HD Call Black" data-price="565" data-https://selfshop.com.bd/_next/image?url=https%3A%2F%2Fmedia.selfshop.com.bd%2Fproducts%2Fvendor%2Fwhatsapp-image-2026-07-17-at-232346-1_UDjavrBZ.jpeg&w=640&q=75" data-desc="Category :
-Electronic Accessories
-Quantity :
-999
-SKU :
-VP1784796850248 Immersive bass, crystal clear sound quality, and long-lasting battery backup bluetooth headphone." data-rev="⭐ 4.7/5 (19 Reviews)- Awesome bass and sound clarity! - Sabbir- Battery backup is superb. - Al-Amin">Anker ES67 Magnetic Wireless Neckband Bluetooth 5.4 Extra Bass 600mAh Type C HD Call Black
-
-Sold by
-SID-00116
-</h3>
-                    <p class="product-price">BDT 565</p>
-                    <div class="btn-container">
-                        <button class="buy-btn" onclick="addToCart('Wireless Bluetooth Headphone', 565)">Add to Cart</button>
-                        <button class="instant-buy-btn" onclick="buyNow('Wireless Bluetooth Headphone', 565)">Buy Now</button>
-                    </div>
-                </div>
-            </div>
 
             <!-- 4. Gadgets -->
             <div class="product-card" data-category="gadgets">
@@ -859,14 +833,13 @@ SID-00116
         <p>&copy; 2026 RRRA Store. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Universal Click Binding & Modal -->
+    <!-- JavaScript for Universal Click Binding, Modal & Order Submission -->
     <script>
         let cart = [];
         let currentProduct = { name: '', price: 0 };
         let activeDescription = '';
         let activeReviews = '';
 
-        // Universal Event Listener for Clickable Items
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.clickable-item').forEach(item => {
                 item.addEventListener('click', () => {
@@ -1035,7 +1008,7 @@ SID-00116
         function submitOrder(event) {
             event.preventDefault();
             const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone0').value || document.getElementById('custPhone').value;
+            const phone = document.getElementById('custPhone').value;
             const address = document.getElementById('custAddress').value;
             const payment = document.getElementById('paymentMethod').value;
             const senderNum = document.getElementById('senderNumber').value || 'N/A';
