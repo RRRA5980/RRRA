@@ -361,6 +361,16 @@
             line-height: 1.6;
             font-size: 15px;
         }
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 22px;
+            color: #111;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: #00d2ff;
+        }
 
         /* Footer */
         footer {
@@ -496,7 +506,16 @@
                     <input type="text" id="trxId" placeholder="e.g. 9H7K3L2M1">
                 </div>
 
-                <button type="submit" class="checkout-btn" style="margin-top: 10px;">Confirm & Send to WhatsApp</button>
+                <div class="form-group">
+                    <label>Choose Order Sending Method</label>
+                    <select id="orderSendMethod" required>
+                        <option value="whatsapp">Send via WhatsApp</option>
+                        <option value="messenger">Send via Facebook Messenger</option>
+                        <option value="email">Send via Email</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="checkout-btn" style="margin-top: 10px;">Confirm & Send Order</button>
             </form>
         </div>
     </div>
@@ -511,8 +530,13 @@
             <div class="info-box" id="contact">
                 <h3>Contact Us</h3>
                 <p><strong>Phone:</strong> +8801850-507154</p>
-                <p><strong>Email:</strong> support@engrrabiul5980@gmail.com</p>
+                <p><strong>Email:</strong> engrrabiul5980@gmail.com</p>
                 <p><strong>Address:</strong> Bera, Pabna, Bangladesh</p>
+                <div class="social-links" style="margin-top: 15px;">
+                    <a href="https://wa.me/8801727866276" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://m.me/@rabiulislam5980" target="_blank" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href="mailto:engrrabiul5980@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -522,7 +546,7 @@
         <p>&copy; 2026 RRRA Winter Store. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Cart & WhatsApp Integration -->
+    <!-- JavaScript for Cart & Multi-Platform Order Routing -->
     <script>
         let cart = [];
 
@@ -619,22 +643,31 @@
             const payment = document.getElementById('paymentMethod').value;
             const senderNum = document.getElementById('senderNumber').value || 'N/A';
             const trxId = document.getElementById('trxId').value || 'N/A';
+            const sendMethod = document.getElementById('orderSendMethod').value;
 
             let orderSummary = '';
             let total = 0;
             cart.forEach(item => {
-                orderSummary += `- ${item.name} (${item.price} BDT)%0A`;
+                orderSummary += `- ${item.name} (${item.price} BDT)\n`;
                 total += item.price;
             });
 
-            // WhatsApp Number
-            const whatsappNumber = "8801850507154";
+            // Message text formatting
+            const message = `🛍️ New Order from RRRA Website\n\nCustomer Name: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nProducts:\n${orderSummary}Total Amount: BDT ${total}\nPayment Method: ${payment}\nSender No: ${senderNum}\nTrxID: ${trxId}`;
 
-            // WhatsApp Message Format
-            const message = `🛍️ *New Order from RRRA Website*%0A%0A*Customer Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A${orderSummary}*Total Amount:* BDT ${total}%0A*Payment Method:* ${payment}%0A*Sender No:* ${senderNum}%0A*TrxID:* ${trxId}`;
-
-            // Open WhatsApp
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            if (sendMethod === 'whatsapp') {
+                const whatsappNumber = "8801727866276";
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            } else if (sendMethod === 'messenger') {
+                // Replace with your Facebook page username or messenger link if available
+                const messengerLink = "https://m.me/@rabiulislam5980";
+                window.open(@rabiulislam5980, '_blank');
+                alert("Please paste your order summary in Messenger:\n\n" + message);
+            } else if (sendMethod === 'email') {
+                const emailAddress = "engrrabiul5980@gmail.com";
+                const subject = encodeURIComponent("New Order from " + name);
+                window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${encodeURIComponent(message)}`;
+            }
 
             // Clear Cart & Close Modal
             cart = [];
